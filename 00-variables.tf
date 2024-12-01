@@ -76,17 +76,22 @@ variable "tokyo-subnets" {
       cidr = "10.40.11.0/24"
       az   = "ap-northeast-1a"
     }
-    tokyo-d-private = {
-      vpc  = "tokyo"
-      cidr = "10.40.14.0/24"
-      az   = "ap-northeast-1d"
-    }
+    # tokyo-d-private = {
+    #   vpc  = "tokyo"
+    #   cidr = "10.40.14.0/24"
+    #   az   = "ap-northeast-1d"
+    # }
     tokyotest-c-public = {
       vpc  = "tokyo-test"
       cidr = "10.40.2.0/24"
       az   = "ap-northeast-1c"
     }
   }
+}
+
+# grab the var.tokyo-subnets and create a new map with the keys that include private
+locals {
+  tokyo-nat = { for k, v in var.tokyo-subnets : k => v if can(regex("private", k)) }
 }
 
 
@@ -105,6 +110,14 @@ variable "london-subnets" {
     }
   }
 }
+
+# aws_vpc.australia-vpc
+# aws_vpc.california-vpc
+# aws_vpc.hong-kong-vpc
+# aws_vpc.london-vpc
+# aws_vpc.new-york-vpc
+# aws_vpc.sao-paulo-vpc
+# aws_vpc.tokyo-vpc
 
 variable "sao-paulo-subnets" {
   type = map(map(string))
