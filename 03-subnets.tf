@@ -57,6 +57,18 @@ resource "aws_subnet" "_5" {
   }
 }
 
+resource "aws_subnet" "_6" {
+  for_each          = var.sao-paulo-subnets
+  provider          = aws.sao-paulo
+  vpc_id            = aws_vpc.sao-paulo-vpc.id
+  cidr_block        = each.value.cidr
+  availability_zone = each.value.az
+
+  tags = {
+    Name = each.key
+  }
+}
+
 resource "aws_subnet" "_7" {
   for_each          = var.tokyo-subnets
   provider          = aws.tokyo

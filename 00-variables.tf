@@ -199,5 +199,10 @@ variable "new-york-subnets" {
   }
 }
 
+variable "route-table-cidr" {
+  type    = string
+  default = "0.0.0.0/0"
+}
+
 
 
