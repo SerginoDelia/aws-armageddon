@@ -92,6 +92,21 @@ variable "tokyo-subnets" {
 # grab the var.tokyo-subnets and create a new map with the keys that include private
 locals {
   tokyo-nat = { for k, v in var.tokyo-subnets : k => v if can(regex("private", k)) }
+
+  route_tables = {
+    for k, v in var.vpcs :
+    k => k == "tokyo" ? { "${k}-rt" = { private = {}, public = {} } } : { "${k}-rt" = { public = {} } }
+  }
+
+  # route_tables = { for k, v in var.vpcs : k => k == "tokyo" ?
+  #   { "${k}-rt-public" = { name = "${k}-rt-public" }, "${k}-rt-private" = { name = "${k}-rt-private" } } :
+  # { "${k}-public-rt" = { name = "${k}-rt-public" } } }
+}
+
+# australia-rt = { public = {} }
+
+output "route-tables" {
+  value = local.route_tables
 }
 
 

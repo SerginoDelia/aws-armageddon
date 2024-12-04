@@ -1,4 +1,5 @@
 locals {
+  # route-tables = { for k, v in var.vpcs : k => { "${k}-rt" = { ssh-port = "22", cidr = "0.0.0.0/0", protocol = "tcp" }, "${k}-sg-lb" = { sg-name = "${k}-sg-lb" } } }
   australia-rt  = { public = {} }
   california-rt = { public = {} }
   hong-kong-rt  = { public = {} }

@@ -2,7 +2,6 @@ locals {
   security-groups = { for k, v in var.vpcs : k => { "${k}-sg-server" = { ssh-port = "22", cidr = "0.0.0.0/0", protocol = "tcp" }, "${k}-sg-lb" = { sg-name = "${k}-sg-lb" } } }
   sg = {
     http-port       = 80
-    ssh-port        = 22
     protocol        = "TCP"
     cidr            = "0.0.0.0/0"
     egress-port     = 0
