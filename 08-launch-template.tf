@@ -26,7 +26,7 @@ output "australia-key-pair" {
 resource "aws_launch_template" "austria-lt" {
   provider      = aws.australia
   name_prefix   = "app1_LT"
-  image_id      = aws_ami.australiam-ami.id
+  image_id      = data.aws_ami.australiam-ami.id
   instance_type = "t2.micro"
 
   key_name               = "MyLinuxBox"
