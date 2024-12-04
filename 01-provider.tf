@@ -1,5 +1,11 @@
-
 terraform {
+  # backend "s3" {
+  #   bucket = "agwe-aws-terraform"
+  #   key    = "aws6-armageddon"
+  #   region = "ap-southeast-2"
+  #   encrypt = true
+  # }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"

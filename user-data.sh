@@ -1,38 +1,4 @@
-data "aws_ami" "australiam-ami" {
-  provider    = aws.australia
-  most_recent = true
-  owners      = ["amazon"]
-
-  filter {
-    name   = "name"
-    values = ["al2023-ami-2023.*-x86_64"]
-  }
-}
-
-# Generate public key on your system
-# ssh-keygen -t rsa -b 4096 -f ~/.ssh/australia-key-pair.pem
-
-resource "aws_key_pair" "australia-key-pair" {
-  provider = aws.australia
-  key_name = "australia-key-pair"
-  # file reference the location of the public key
-  public_key = file("~/.ssh/australia-key-pair.pem.pub")
-}
-
-output "australia-key-pair" {
-  value = aws_key_pair.australia-key-pair
-}
-
-resource "aws_launch_template" "austria-lt" {
-  provider      = aws.australia
-  name_prefix   = "app1_LT"
-  image_id      = data.aws_ami.australiam-ami.id
-  instance_type = "t2.micro"
-
-  key_name               = "MyLinuxBox"
-  vpc_security_group_ids = [aws_security_group._1["australia-sg-server"].id]
-  user_data = base64encode(<<-EOF
-    #!/bin/bash
+#!/bin/bash
     yum update -y
     yum install -y httpd
     systemctl start httpd
@@ -69,18 +35,3 @@ resource "aws_launch_template" "austria-lt" {
     HTML
     # Clean up the temp files
     rm -f /tmp/local_ipv4 /tmp/az /tmp/macid
-  EOF
-  )
-  tag_specifications {
-    resource_type = "instance"
-    tags = {
-      Name    = "app1_LT"
-      Service = "application1"
-      Owner   = "Chewbacca"
-      Planet  = "Mustafar"
-    }
-  }
-  lifecycle {
-    create_before_destroy = true
-  }
-}
