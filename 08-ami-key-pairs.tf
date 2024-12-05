@@ -48,13 +48,9 @@ data "aws_ami" "hong-kong-ami" {
   }
 }
 
-# Generate rsa key pair on your system
-# ssh-keygen -t rsa -b 4096 -f ~/.ssh/aws.pem
-
 resource "aws_key_pair" "hong-kong-key-pair" {
-  provider = aws.hong-kong
-  key_name = "hong-kong-key-pair"
-  # file reference the location of the public key
+  provider   = aws.hong-kong
+  key_name   = "hong-kong-key-pair"
   public_key = file("~/.ssh/aws.pem.pub")
 }
 
@@ -70,9 +66,8 @@ data "aws_ami" "london-ami" {
 }
 
 resource "aws_key_pair" "london-key-pair" {
-  provider = aws.london
-  key_name = "london-key-pair"
-  # file reference the location of the public key
+  provider   = aws.london
+  key_name   = "london-key-pair"
   public_key = file("~/.ssh/aws.pem.pub")
 }
 
@@ -88,9 +83,8 @@ data "aws_ami" "new-york-ami" {
 }
 
 resource "aws_key_pair" "new-york-key-pair" {
-  provider = aws.new-york
-  key_name = "new-york-key-pair"
-  # file reference the location of the public key
+  provider   = aws.new-york
+  key_name   = "new-york-key-pair"
   public_key = file("~/.ssh/aws.pem.pub")
 }
 
@@ -106,9 +100,8 @@ data "aws_ami" "sao-paulo-ami" {
 }
 
 resource "aws_key_pair" "sao-paulo-key-pair" {
-  provider = aws.sao-paulo
-  key_name = "sao-paulo-key-pair"
-  # file reference the location of the public key
+  provider   = aws.sao-paulo
+  key_name   = "sao-paulo-key-pair"
   public_key = file("~/.ssh/aws.pem.pub")
 }
 
@@ -124,8 +117,13 @@ data "aws_ami" "tokyo-ami" {
 }
 
 resource "aws_key_pair" "tokyo-key-pair" {
-  provider = aws.tokyo
-  key_name = "tokyo-key-pair"
-  # file reference the location of the public key
+  provider   = aws.tokyo
+  key_name   = "tokyo-key-pair"
   public_key = file("~/.ssh/aws.pem.pub")
 }
+
+# resource "aws_key_pair" "tokyo-test-key-pair" {
+#   provider   = aws.tokyo
+#   key_name   = "tokyo-key-pair"
+#   public_key = file("~/.ssh/aws.pem.pub")
+# }

@@ -13,25 +13,17 @@ terraform {
     }
   }
 }
-# - Tokyo.
-# - New York
-# - London
-# - Sao Paulo
-# - Australia 
-# - Hong Kong
-# - California
+provider "aws" {
+  # Configuration options
+  region = var.setup.australia
+  alias  = "australia"
+}
 
 provider "aws" {
   # Configuration options
-  region = var.setup.new-york
-  alias  = "new-york"
+  region = var.setup.california
+  alias  = "california"
 }
-provider "aws" {
-  # Configuration options
-  region = var.setup.tokyo
-  alias  = "tokyo"
-}
-
 provider "aws" {
   # Configuration options
   region = var.setup.london
@@ -40,14 +32,13 @@ provider "aws" {
 
 provider "aws" {
   # Configuration options
-  region = var.setup.sao-paulo
-  alias  = "sao-paulo"
+  region = var.setup.new-york
+  alias  = "new-york"
 }
-
 provider "aws" {
   # Configuration options
-  region = var.setup.australia
-  alias  = "australia"
+  region = var.setup.sao-paulo
+  alias  = "sao-paulo"
 }
 
 provider "aws" {
@@ -58,6 +49,12 @@ provider "aws" {
 
 provider "aws" {
   # Configuration options
-  region = var.setup.california
-  alias  = "california"
+  region = var.setup.tokyo
+  alias  = "tokyo"
+}
+
+provider "aws" {
+  # Configuration options
+  region = var.setup.tokyo-test
+  alias  = "tokyo-test"
 }

@@ -1,13 +1,14 @@
 variable "setup" {
   type = map(string)
   default = {
-    tokyo      = "ap-northeast-1"
-    new-york   = "us-east-1"
-    london     = "eu-west-2"
-    sao-paulo  = "sa-east-1"
     australia  = "ap-southeast-2"
-    hong-kong  = "ap-east-1"
     california = "us-west-1"
+    hong-kong  = "ap-east-1"
+    london     = "eu-west-2"
+    new-york   = "us-east-1"
+    sao-paulo  = "sa-east-1"
+    tokyo      = "ap-northeast-1"
+    tokyo-test = "ap-northeast-1"
   }
 }
 
@@ -16,56 +17,56 @@ variable "network" {
   default = {
     vpcs = {
       australia = {
-        australia-1 = {
+        australia = {
           region = "ap-southeast-2"
           cidr   = "10.44.0.0/16"
           name   = "australia"
         }
       }
       california = {
-        california-1 = {
+        california = {
           region = "us-west-1"
           cidr   = "10.46.0.0/16"
           name   = "california"
         }
       }
       hong-kong = {
-        hong-kong-1 = {
+        hong-kong = {
           region = "ap-east-1"
           cidr   = "10.45.0.0/16"
           name   = "hong-kong"
         }
       }
       london = {
-        london-1 = {
+        london = {
           region = "eu-west-2"
           cidr   = "10.42.0.0/16"
           name   = "london"
         }
       }
       new-york = {
-        new-york-1 = {
+        new-york = {
           region = "us-east-1"
           cidr   = "10.41.0.0/16"
           name   = "new-york"
         }
       }
       sao-paulo = {
-        sao-paulo-1 = {
+        sao-paulo = {
           region = "sa-east-1"
           cidr   = "10.43.0.0/16"
           name   = "sao-paulo"
         }
       }
       tokyo = {
-        tokyo-1 = {
+        tokyo = {
           region = "ap-northeast-1"
           cidr   = "10.40.0.0/16"
           name   = "tokyo"
         }
       }
       tokyo-test = {
-        tokyo-test-1 = {
+        tokyo-test = {
           region = "ap-northeast-1"
           cidr   = "10.47.0.0/16"
           name   = "tokyo-test"
@@ -166,10 +167,6 @@ variable "network" {
       }
     }
   }
-}
-
-output "vpcs" {
-  value = var.network.vpcs
 }
 
 output "subnets" {
