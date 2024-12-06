@@ -122,8 +122,8 @@ resource "aws_key_pair" "tokyo-key-pair" {
   public_key = file("~/.ssh/aws.pem.pub")
 }
 
-# resource "aws_key_pair" "tokyo-test-key-pair" {
-#   provider   = aws.tokyo
-#   key_name   = "tokyo-key-pair"
-#   public_key = file("~/.ssh/aws.pem.pub")
-# }
+resource "aws_key_pair" "tokyo-test-key-pair" {
+  provider   = aws.tokyo
+  key_name   = "tokyo-test-key-pair"
+  public_key = file("~/.ssh/aws.pem.pub")
+}

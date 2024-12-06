@@ -147,12 +147,13 @@ resource "aws_launch_template" "_7" {
 }
 
 resource "aws_launch_template" "_8" {
-  for_each               = local.lt-names.tokyo-test
-  provider               = aws.tokyo-test
-  name                   = each.key
-  image_id               = data.aws_ami.tokyo-ami.id
-  instance_type          = each.value.instance_type
-  key_name               = "tokyo-key-pair"
+  for_each      = local.lt-names.tokyo-test
+  provider      = aws.tokyo-test
+  name          = each.key
+  image_id      = data.aws_ami.tokyo-ami.id
+  instance_type = each.value.instance_type
+  # key_name               = "tokyo-key-pair"
+  key_name               = each.value.key-pair
   vpc_security_group_ids = [aws_security_group._8[each.value.sg].id]
   user_data              = each.value.user-data
   tag_specifications {

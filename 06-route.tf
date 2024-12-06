@@ -1,6 +1,8 @@
 locals {
   route-tables = { for k, v in var.network.vpcs : k => { "${k}" = { ssh-port = "22",
   cidr = "0.0.0.0/0", protocol = "tcp" } } }
+  # route-tables = { for k, v in var.network.vpcs : k => { "${k}" = { ssh-port = "22",
+  # cidr = "0.0.0.0/0", protocol = "tcp" } } }
 
 
   # route-tables = { for k, v in var.network.vpcs : k => { "${k}" = { ssh-port = "22",
