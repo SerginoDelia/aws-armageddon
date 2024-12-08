@@ -166,13 +166,3 @@ resource "aws_launch_template" "_8" {
     create_before_destroy = true
   }
 }
-
-
-# aws_vpc.australia-vpc
-# aws_vpc.california-vpc
-# aws_vpc.hong-kong-vpc
-# aws_vpc.london-vpc
-# aws_vpc.new-york-vpc
-# aws_vpc.sao-paulo-vpc
-# aws_vpc.tokyo-vpc
-# aws_vpc.tokyo-test-vpc

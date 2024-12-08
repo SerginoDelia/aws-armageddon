@@ -169,6 +169,7 @@ variable "network" {
   }
 }
 
+
 # aws_vpc.australia-vpc
 # aws_vpc.california-vpc
 # aws_vpc.hong-kong-vpc
