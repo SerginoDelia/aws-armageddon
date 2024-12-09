@@ -53,8 +53,21 @@ Notes:
   limitation port 80 open to public: Port 80: [0.0.0.0/0]
   Syslog stored data in Japan only: stage2
   No personal info stored abroad: can be read/write abroad
-  Syslog AZ must be private: stage2
   
+  * Syslog AZ must be private/without a public: stage2
+  - there cannot be any public subnet
+  - Database and Syslog will be in the same private AZ
+  - only way to get in will be transit gateway
+
+  RAM - Resource allocation Management
+  - Asia
+  - America
+  - Europe
+  - Sao Paulo
+
+  Have redundancy for the syslog server
+  - ASG
+  - Internally facing load balancer
 
   1 VPC per region/region close to location
     2 AZs per VPC

@@ -23,6 +23,62 @@ resource "aws_networkmanager_transit_gateway_registration" "global-network-tg-re
 # Work on creating the connections between the Transit Gateway and the VPCs
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/networkmanager_vpc_attachment
 
+# AWS RAM
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ram_resource_association
+
+# Possible Solution
+
+# resource "aws_ec2_transit_gateway" "tgw" {
+#   provider = aws.virginia
+
+#   description = "Transit Gateway connecting Tokyo and Virginia"
+
+#   tags = {
+#     Name = "Main Transit Gateway"
+#   }
+# }
+
+# resource "aws_ec2_transit_gateway_vpc_attachment" "tokyo_tgw_attachment" {
+#   provider            = aws.tokyo
+#   transit_gateway_id  = aws_ec2_transit_gateway.tgw.id
+#   vpc_id              = aws_vpc.tokyo_vpc.id
+#   subnet_ids          = [aws_subnet.tokyo_subnet_1.id, aws_subnet.tokyo_subnet_2.id]
+
+#   tags = {
+#     Name = "Tokyo TGW Attachment"
+#   }
+# }
+
+# resource "aws_ec2_transit_gateway_vpc_attachment" "virginia_tgw_attachment" {
+#   provider            = aws.virginia
+#   transit_gateway_id  = aws_ec2_transit_gateway.tgw.id
+#   vpc_id              = aws_vpc.virginia_vpc.id
+#   subnet_ids          = [aws_subnet.virginia_subnet_1.id, aws_subnet.virginia_subnet_2.id]
+
+#   tags = {
+#     Name = "Virginia TGW Attachment"
+#   }
+# }
+
+# resource "aws_route" "tokyo_to_virginia" {
+#   provider            = aws.tokyo
+#   route_table_id      = aws_route_table.tokyo_route_table.id
+#   destination_cidr_block = aws_vpc.virginia_vpc.cidr_block
+#   transit_gateway_id  = aws_ec2_transit_gateway.tgw.id
+# }
+
+# resource "aws_route" "virginia_to_tokyo" {
+#   provider            = aws.virginia
+#   route_table_id      = aws_route_table.virginia_route_table.id
+#   destination_cidr_block = aws_vpc.tokyo_vpc.cidr_block
+#   transit_gateway_id  = aws_ec2_transit_gateway.tgw.id
+# }
+
+
+
+
+
+
 # resource "aws_networkmanager_core_network" "example" {
 #   global_network_id = aws_networkmanager_global_network.example.id
 
