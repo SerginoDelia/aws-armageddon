@@ -73,11 +73,12 @@ resource "aws_lb_target_group" "_7" {
   vpc_id   = aws_vpc._7[each.value.vpc].id
 }
 
-resource "aws_lb_target_group" "_tokyo-test" {
-  for_each = local.target-groups.hong-kong
-  provider = aws.hong-kong
+resource "aws_lb_target_group" "_8" {
+  for_each = local.target-groups.tokyo-test
+  provider = aws.tokyo-test
   name     = each.key
   port     = local.tg-values.port
   protocol = local.tg-values.protocol
-  vpc_id   = aws_vpc._tokyo-test[each.value.vpc].id
+  vpc_id   = aws_vpc._8[each.value.vpc].id
+  # vpc_id   = aws_vpc._8["tokyo-test"].id
 }

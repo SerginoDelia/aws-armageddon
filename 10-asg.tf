@@ -75,7 +75,7 @@ resource "aws_autoscaling_group" "_3" {
   }
 }
 
-resource "aws_autoscaling_group" "4" {
+resource "aws_autoscaling_group" "_4" {
   for_each = local.asg-subnets.london
   provider = aws.london
   name     = each.key
@@ -85,10 +85,10 @@ resource "aws_autoscaling_group" "4" {
   min_size             = 3
   health_check_type    = "EC2"
   termination_policies = ["OldestInstance"]
-  vpc_zone_identifier = [for subnet in local.subnet-identifier.london : aws_subnet.4[subnet].id]
+  vpc_zone_identifier = [for subnet in local.subnet-identifier.london : aws_subnet._4[subnet].id]
 
   launch_template {
-    id      = aws_launch_template.4["london-lt"].id
+    id      = aws_launch_template._4["london-lt"].id
     version = "$Latest"
   }
   tag {
@@ -97,6 +97,8 @@ resource "aws_autoscaling_group" "4" {
     propagate_at_launch = true
   }
 }
+
+
 
 resource "aws_autoscaling_group" "_5" {
   for_each = local.asg-subnets.new-york
@@ -168,8 +170,8 @@ resource "aws_autoscaling_group" "_7" {
 }
 
 resource "aws_autoscaling_group" "_8" {
-  for_each = local.asg-subnets.toke-test
-  provider = aws.toke-test
+  for_each = local.asg-subnets.tokyo-test
+  provider = aws.tokyo-test
   name     = each.key
   # availability_zones   = []
   desired_capacity     = 3
@@ -177,10 +179,10 @@ resource "aws_autoscaling_group" "_8" {
   min_size             = 3
   health_check_type    = "EC2"
   termination_policies = ["OldestInstance"]
-  vpc_zone_identifier = [for subnet in local.subnet-identifier.toke-test : aws_subnet._8[subnet].id]
+  vpc_zone_identifier = [for subnet in local.subnet-identifier.tokyo-test : aws_subnet._8[subnet].id]
 
   launch_template {
-    id      = aws_launch_template._8["toke-test-lt"].id
+    id      = aws_launch_template._8["tokyo-test-lt"].id
     version = "$Latest"
   }
   tag {
