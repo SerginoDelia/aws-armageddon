@@ -1,8 +1,3 @@
-locals {
-  tgw-peering = { for k,v in var.vpcs}
-}
-
-
 data "aws_caller_identity" "australia" {
   provider = aws.australia
 }
