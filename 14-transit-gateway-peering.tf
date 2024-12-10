@@ -31,8 +31,7 @@ resource "aws_ec2_transit_gateway_peering_attachment" "_7-tokyo-to-australia" {
   peer_transit_gateway_id = aws_ec2_transit_gateway._1["australia"].id
   transit_gateway_id      = aws_ec2_transit_gateway._7["tokyo"].id
   tags = {
-    Name = "terraform-example"
-    Side = "Creator"
+    Name = "tokyo-to-australia"
   }
 }
 
@@ -43,8 +42,7 @@ resource "aws_ec2_transit_gateway_peering_attachment" "_7-tokyo-to-california" {
   peer_transit_gateway_id = aws_ec2_transit_gateway._2["california"].id
   transit_gateway_id      = aws_ec2_transit_gateway._7["tokyo"].id
   tags = {
-    Name = "terraform-example"
-    Side = "Creator"
+    Name = "tokyo-to-california"
   }
 }
 
@@ -55,8 +53,7 @@ resource "aws_ec2_transit_gateway_peering_attachment" "_7-tokyo-to-hong-kong" {
   peer_transit_gateway_id = aws_ec2_transit_gateway._3["hong-kong"].id
   transit_gateway_id      = aws_ec2_transit_gateway._7["tokyo"].id
   tags = {
-    Name = "terraform-example"
-    Side = "Creator"
+    Name = "tokyo-to-hong-kong"
   }
 }
 
@@ -67,8 +64,7 @@ resource "aws_ec2_transit_gateway_peering_attachment" "_7-tokyo-to-london" {
   peer_transit_gateway_id = aws_ec2_transit_gateway._4["london"].id
   transit_gateway_id      = aws_ec2_transit_gateway._7["tokyo"].id
   tags = {
-    Name = "terraform-example"
-    Side = "Creator"
+    Name = "tokyo-to-london"
   }
 }
 
@@ -79,8 +75,7 @@ resource "aws_ec2_transit_gateway_peering_attachment" "_7-tokyo-to-new-york" {
   peer_transit_gateway_id = aws_ec2_transit_gateway._5["new-york"].id
   transit_gateway_id      = aws_ec2_transit_gateway._7["tokyo"].id
   tags = {
-    Name = "terraform-example"
-    Side = "Creator"
+    Name = "tokyo-to-new-york"
   }
 }
 
@@ -91,8 +86,7 @@ resource "aws_ec2_transit_gateway_peering_attachment" "_7-tokyo-to-sao-paulo" {
   peer_transit_gateway_id = aws_ec2_transit_gateway._6["sao-paulo"].id
   transit_gateway_id      = aws_ec2_transit_gateway._7["tokyo"].id
   tags = {
-    Name = "terraform-example"
-    Side = "Creator"
+    Name = "tokyo-to-sao-paulo"
   }
 }
 
@@ -101,8 +95,7 @@ resource "aws_ec2_transit_gateway_peering_attachment_accepter" "_1-australia" {
 
   transit_gateway_attachment_id = aws_ec2_transit_gateway_peering_attachment._7-tokyo-to-australia.id
   tags = {
-    Name = "terraform-example"
-    Side = "Acceptor"
+    Name = "australia-peering-acceptor"
   }
 }
 
@@ -111,8 +104,7 @@ resource "aws_ec2_transit_gateway_peering_attachment_accepter" "_2-california" {
 
   transit_gateway_attachment_id = aws_ec2_transit_gateway_peering_attachment._7-tokyo-to-california.id
   tags = {
-    Name = "terraform-example"
-    Side = "Acceptor"
+    Name = "california-peering-acceptor"
   }
 }
 
@@ -121,8 +113,7 @@ resource "aws_ec2_transit_gateway_peering_attachment_accepter" "_3-hong-kong" {
 
   transit_gateway_attachment_id = aws_ec2_transit_gateway_peering_attachment._7-tokyo-to-hong-kong.id
   tags = {
-    Name = "terraform-example"
-    Side = "Acceptor"
+    Name = "hong-kong-peering-acceptor"
   }
 }
 
@@ -131,8 +122,7 @@ resource "aws_ec2_transit_gateway_peering_attachment_accepter" "_4-london" {
 
   transit_gateway_attachment_id = aws_ec2_transit_gateway_peering_attachment._7-tokyo-to-london.id
   tags = {
-    Name = "terraform-example"
-    Side = "Acceptor"
+    Name = "london-peering-acceptor"
   }
 }
 
@@ -141,8 +131,7 @@ resource "aws_ec2_transit_gateway_peering_attachment_accepter" "_5-new-york" {
 
   transit_gateway_attachment_id = aws_ec2_transit_gateway_peering_attachment._7-tokyo-to-new-york.id
   tags = {
-    Name = "terraform-example"
-    Side = "Acceptor"
+    Name ="new-york-peering-acceptor"
   }
 }
 
@@ -151,8 +140,7 @@ resource "aws_ec2_transit_gateway_peering_attachment_accepter" "_6-sao-paulo" {
 
   transit_gateway_attachment_id = aws_ec2_transit_gateway_peering_attachment._7-tokyo-to-sao-paulo.id
   tags = {
-    Name = "terraform-example"
-    Side = "Acceptor"
+    Name = "sao-paulo-peering-acceptor"
   }
 }
 
