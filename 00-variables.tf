@@ -157,6 +157,11 @@ variable "network" {
           cidr = "10.40.4.0/24"
           az   = "ap-northeast-1d"
         }
+        # tokyo-c-private = {
+        #   vpc  = "tokyo"
+        #   cidr = "10.40.13.0/24"
+        #   az   = "ap-northeast-1d"
+        # }
       }
       tokyo-test = {
         tokyotest-b-public = {
